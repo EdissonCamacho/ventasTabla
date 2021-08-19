@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='vistas/main.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Registre nuevas ventas </h1>
+
+        </div>
+
+    </div>
+
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Registrar Nueva
+        Venta</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form >
+                        <div class="form-group">
+                            <label for="email">Vendedor:</label>
+
+                            <select name="cars" id="vendedor">
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Mes:</label>
+                            <select name="cars" id="mes">
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="email">Venta:</label>
+                            <input type="text" class="form-control" id="valorVenta">
+
+                        </div>
+
+                        
+
+
+
+                      
+                    </form>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="guardar" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="container">
+
+    <table class="table">
+        <thead id="cabecera">
+          
+        </thead>
+        <tbody id="cuerpo">
+          
+        </tbody>
+      </table>
+    </div>
+
+
+</body>
+
+</html>
