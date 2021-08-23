@@ -24,7 +24,7 @@ class modeloVendedor{
     }
 
     public static function mdlConsultaMeses(){
-        $objConsulta=conexion::conectar()->prepare("select distinct(mes.nombreMes)from ventasVendedor inner join vendedor on  vendedor.idVendedor=ventasVendedor.idVendedor inner join mes on mes.idMes =ventasVendedor.idMes");
+        $objConsulta=conexion::conectar()->prepare("select * from mes");
         $objConsulta->execute();
         $objLista= $objConsulta->fetchAll();
         return $objLista;
@@ -32,7 +32,7 @@ class modeloVendedor{
 
     }
     public static function mdlConsultaDatos(){
-        $objConsulta=conexion::conectar()->prepare(" select * from ventasVendedor inner join vendedor on  vendedor.idVendedor=ventasVendedor.idVendedor inner join mes on mes.idMes =ventasVendedor.idMes order by vendedor.idVendedor asc");
+        $objConsulta=conexion::conectar()->prepare("select * from pagos3");
         $objConsulta->execute();
         $objLista= $objConsulta->fetchAll();
         return $objLista;
@@ -57,6 +57,64 @@ class modeloVendedor{
 
 
 
+
+
+
+
+    }
+
+
+    public static function mdlEliminarRegistros($idVendedor){
+        $mensaje="";
+
+        $objConsulta=conexion::conectar()->prepare("Delete from ventasVendedor where idVendedor=".$idVendedor."");
+
+        if($objConsulta->execute()){
+
+            $mensaje="ok";
+
+        }
+        else{
+            $mensaje="";
+
+        }
+
+        $objConsulta=null;
+        return $mensaje;
+
+
+
+    }
+
+    public static function mdlConsultarValores($idPersonal){
+
+
+        $objConsulta=conexion::conectar()->prepare("select ventasVendedor.idMes,mes.nombreMes,totalVendido,ventasVendedor.idVendedor,idVentasVendedor, nombre,apellidos from ventasVendedor inner join mes on mes.idMes=ventasVendedor.idMes inner join vendedor on ventasVendedor.idVendedor=vendedor.idVendedor where ventasVendedor.idVendedor=".$idPersonal."");
+        $objConsulta->execute();
+        $lista= $objConsulta->fetchAll();
+        $objConsulta=null;
+        return $lista;
+
+    }
+
+    public static function mdlModificarValorMes($total,$idVenta){
+
+        $mensaje="";
+
+        $objConsulta=conexion::conectar()->prepare("Update ventasVendedor set totalVendido=".$total." where idVentasVendedor=".$idVenta."");
+
+        if($objConsulta->execute()){
+
+            $mensaje="ok";
+
+        }
+        else{
+            $mensaje="";
+
+        }
+
+        $objConsulta=null;
+        return $mensaje;
 
 
 

@@ -7,6 +7,8 @@ class vendedorContro{
     public $idMes=0;
     public $idVendedor =0;
     public $valorVenta=0;
+    public $idVenta =0;
+
     public  function cargarSelectMes()
     {
       
@@ -40,6 +42,30 @@ class vendedorContro{
 
         $objRespuesta=modeloVendedor::mdlConsultaDatos();
         echo json_encode($objRespuesta);
+    }
+
+    public function ctrlEliminarRegistros(){
+
+
+        $objRespuesta=modeloVendedor::mdlEliminarRegistros($this->idVendedor);
+        echo json_encode($objRespuesta);
+
+
+    }
+
+    public function ctrlConsultarValores(){
+        $objRespuesta=modeloVendedor::mdlConsultarValores($this->idVendedor);
+        echo json_encode($objRespuesta);
+
+
+
+    }
+
+    public function ctrlModificarValorMes(){
+        $objRespuesta=modeloVendedor::mdlModificarValorMes($this->valorVenta,$this->idVenta);
+        echo json_encode($objRespuesta);
+
+
     }
 
 
@@ -88,5 +114,31 @@ if(isset($_POST["consultaMeses"])){
 if(isset($_POST["consulatarDatos"])){
     $objConsulta = new vendedorContro();
     $objConsulta->consultarDatos();
+
+}
+
+if(isset($_POST["idEliminar"])){
+    $objConsulta = new vendedorContro();
+    $objConsulta->idVendedor=$_POST["idEliminar"];
+    $objConsulta->ctrlEliminarRegistros();
+
+
+
+}
+if(isset($_POST["idPersonaMod"])){
+
+    $objConsulta=new vendedorContro();
+    $objConsulta->idVendedor=$_POST["idPersonaMod"];
+    $objConsulta->ctrlConsultarValores();
+
+}
+
+if(isset($_POST["idVenta"]) && isset($_POST["total"])){
+    $objConsulta=new vendedorContro();
+    $objConsulta->idVenta=$_POST["idVenta"];
+    $objConsulta->valorVenta=$_POST["total"];
+    $objConsulta->ctrlModificarValorMes();
+
+
 
 }
